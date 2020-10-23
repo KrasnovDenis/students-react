@@ -1,0 +1,21 @@
+a.list-group-item.list-group-item-action{
+    max-width: 700px;
+    display: flex;
+    padding-top: 20px;
+    margin: auto;
+}
+
+.list-group-students {
+    padding-top: 80px;
+}
+
+.label-template{
+    width: inherit;
+}
+
+.close-button{
+    position : relative;
+    margin-left: 90%;
+    text-align: center;
+}
+
