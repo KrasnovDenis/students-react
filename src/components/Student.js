@@ -1,16 +1,16 @@
 import React from "react";
 import '../style/Label.css';
 import '../style/Student.css';
-
+import {removeUserById} from "../store/StudentController";
 
 export function Student(props) {
     return (
         <div className="panel panel-default label-template">
             <div className="panel-heading">
-                Группа {props.student.name}
+                <h2> {props.student.name}</h2>
             </div>
             <div className="panel-body">
-                Группа - {props.student.group}
+                <h5>{props.student.group}</h5>
             </div>
             <div className="panel-body">
                 Тип обучения - {props.student.educationTiming}
@@ -19,13 +19,8 @@ export function Student(props) {
                 Средний балл - {props.student.averageGrade}
             </div>
             <div className="panel-body">
-                Долги по учебе  - {props.student.doubt}
+                Долги по учебе - {props.student.doubt}
             </div>
-
-
-            <button type="button" className="btn btn-danger close-button ">
-                Remove
-            </button>
         </div>
     );
 }

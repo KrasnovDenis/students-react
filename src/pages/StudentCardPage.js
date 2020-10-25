@@ -2,45 +2,41 @@ import React from "react";
 import '../style/Label.css';
 import '../style/Student.css';
 import '../style/CardPage.css';
-import {student} from "../store/userRepo";
-
-const studentFromJson = loadUserById();
+import {students} from "../store/StudentsRepo";
+import {getStudentById, removeUserById} from "../store/StudentController";
 
 export function StudentCardPage() {
+    let student = getStudent();
+
     return (
-        <div>
-            <div className="area col-lg-10">
-                <div>Left</div>
-                <div className="panel panel-default label-template">
-                    <div className="panel-heading">
-                        Группа {studentFromJson.name}
+
+        <div className='container'>
+
+            <div className="area card">
+                <img className="card-img-top" src="..." alt="Card image cap"/>
+                    <div className="card-body">
+                        <h5 className="card-title">
+                            {student.name}
+                        </h5>
+                        <p className="card-text">{student.group} </p>
                     </div>
-                    <div className="panel-body">
-                        Группа - {studentFromJson.group}
-                    </div>
-                    <div className="panel-body">
-                        Тип обучения - {studentFromJson.educationTiming}
-                    </div>
-                    <div className="panel-body">
-                        Средний балл - {studentFromJson.averageGrade}
-                    </div>
-                    <div className="panel-body">
-                        Долги по учебе  - {studentFromJson.doubt}
-                    </div>
-                </div>
-            </div>
-            <div className="info col-lg-10">
-                <div>Right</div>
+                    <ul className="list-group list-group-flush">
+                        <li className="list-group-item"> Тип обучения - {student.educationTiming}</li>
+                        <li className="list-group-item">Средний балл - {student.averageGrade}</li>
+                        <li className="list-group-item">Долги по учебе  - {student.doubt}</li>
+                    </ul>
+                <button type="button" onClick={removeUserById(student.id)}
+                        className="btn btn-danger">
+                    Отчислить
+                </button>
             </div>
         </div>
     );
 }
 
-function getUserId() {
+function getStudent() {
     const url = window.location.pathname;
-    return url.substring(url.lastIndexOf('/') + 1);
-}
-function loadUserById(){
-    const userId = getUserId();
-    return student[userId];
+    const studentId =  parseInt(url.substring(url.lastIndexOf('/') + 1));
+
+    return getStudentById(studentId);
 }

@@ -13,9 +13,7 @@ export const NavBar = () => {
 
             <div className="collapse navbar-collapse" id="navbarColor02">
                 <ul className="navbar-nav mr-auto">
-                    <li className="nav-item active">
-                        < Link className="nav-link" to={'/home'} >Home <span className="sr-only">(current)</span></Link>
-                    </li>
+
                     <li className="nav-item">
                         <Link className="nav-link" to={"/students"}>Студенты</Link>
                     </li>
@@ -24,10 +22,7 @@ export const NavBar = () => {
                     </li>
 
                 </ul>
-                <form className="form-inline">
-                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                </form>
+
             </div>
         </nav>
     )
