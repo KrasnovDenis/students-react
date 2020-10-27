@@ -2,9 +2,9 @@ import React from "react";
 import '../style/Label.css';
 import '../style/Student.css';
 import '../style/CardPage.css';
-import {getGroupById} from "../store/GroupController";
+import {deleteStudentFromGroup, getGroupById, putStudent} from "../store/GroupController";
 import {Link} from "react-router-dom";
-
+import {StudentEntity} from '../entities/StudentEntity';
 
 export function GroupCardPage() {
     const group = getGroup();
@@ -14,7 +14,7 @@ export function GroupCardPage() {
         htmlStudents.push(
             <div className=' list-group-item'>
                 <div className='row'>
-                    <div className='col-lg-10 student-item' id={"id=" + group.students[i].id}>
+                    <div className='col-lg-10 student-item'>
                         <Link to={"/student/" + group.students[i].id}>
                             {group.students[i].name}
                         </Link>
@@ -22,10 +22,8 @@ export function GroupCardPage() {
 
                     <div className='col-lg-1'>
                         <button type="button"
-                                onClick={function () {
-
-                                    }
-                                } className="btn btn-danger">
+                                onClick={() => deleteStudentFromGroup(group.id, group.students[i].id)}
+                                className="btn btn-danger">
                             Отчислить
                         </button>
                     </div>
@@ -44,7 +42,7 @@ export function GroupCardPage() {
 
                     <div className="panel panel-default label-template">
                         <div className="panel-heading">
-                           <h2> {group.name}</h2>
+                            <h2> {group.name}</h2>
                         </div>
                         <div className="panel-body">
                             <h5> {group.direction}</h5>
@@ -56,7 +54,8 @@ export function GroupCardPage() {
 
                         <div>
                             <button type="button"
-                                    className="btn btn-dark close-button ">
+                                    className="btn btn-dark close-button "
+                                    onClick={() => putStudent(new StudentEntity("петя",  "Пинф31","очно","3.2", "нет"))}>
                                 Зачислить
                             </button>
                         </div>

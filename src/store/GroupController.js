@@ -1,6 +1,6 @@
 import {groups} from './groupsRepo';
 
-export function putStudent(Student) {
+export function putStudent(student) {
 
 }
 
@@ -26,7 +26,8 @@ export function getStudentsByGroupId(id){
     const group = getGroupById(id);
     return group.students;
 }
-export function deduct() {
+
+export function deduct(id) {
     alert("Вы уверены ?");
 }
 export function deductAll() {
@@ -39,6 +40,7 @@ export function deleteStudentFromGroup(groupId, studentId) {
             for(let j = 0; j < groups.entities[i].students.length; j++){
                 if(groups.entities[i].students[j].id === studentId){
                     groups.entities[i].students.splice(j,1);
+                    alert("Уволен!");
                 }
 
             }

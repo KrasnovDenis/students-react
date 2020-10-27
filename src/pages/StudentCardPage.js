@@ -32,7 +32,7 @@ export function StudentCardPage() {
                     <li className="list-group-item">Средний балл - {student.averageGrade}</li>
                     <li className="list-group-item">Долги по учебе - {student.doubt}</li>
                 </ul>
-                <button type="button" onClick={removeUserById(student.id)}
+                <button type="button" onClick={() => removeUserById(student.id)}
                         className="btn btn-danger">
                     Отчислить
                 </button>
