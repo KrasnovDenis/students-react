@@ -4,10 +4,7 @@ import {Link} from "react-router-dom";
 import '../style/Students.css';
 import '../style/Label.css';
 import '../store/StudentsRepo';
-import {students} from "../store/StudentsRepo";
-import {groups} from "../store/groupsRepo";
-import {Group} from "../components/Group";
-import {getAllStudents, removeUserById} from "../store/StudentController";
+import {getAllStudents} from "../store/StudentController";
 
 export const Students = () => {
 

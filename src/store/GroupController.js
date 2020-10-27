@@ -5,7 +5,11 @@ export function putStudent(Student) {
 }
 
 export function removeGroupById(id){
-    console.log("BANG!");
+    for(let i = 0; i < groups.entities.length; i++){
+        if(groups.entities[i].id === id){
+            groups.entities.splice(i,1);
+        }
+    }
 }
 
 export function getGroupById(id) {
@@ -19,13 +23,27 @@ export function getGroupById(id) {
 }
 
 export function getStudentsByGroupId(id){
-    var group = getGroupById(id);
+    const group = getGroupById(id);
     return group.students;
 }
-
+export function deduct() {
+    alert("Вы уверены ?");
+}
+export function deductAll() {
+    alert("Всех не отчислят!");
+}
 
 export function deleteStudentFromGroup(groupId, studentId) {
+    for(let i = 0; i < groups.entities.length; i++){
+        if(groups.entities[i].id === groupId){
+            for(let j = 0; j < groups.entities[i].students.length; j++){
+                if(groups.entities[i].students[j].id === studentId){
+                    groups.entities[i].students.splice(j,1);
+                }
 
+            }
+        }
+    }
 }
 
 export function getAllGroups(){

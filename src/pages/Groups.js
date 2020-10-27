@@ -1,6 +1,5 @@
 import React from 'react';
 import {Group} from '../components/Group';
-import {Link} from "react-router-dom";
 import '../style/Groups.css';
 import '../style/Label.css';
 import {getAllGroups} from "../store/GroupController";
@@ -8,8 +7,8 @@ import {getAllGroups} from "../store/GroupController";
 
 export function Groups() {
     let groups = getAllGroups();
-    var htmlGroup = [];
-    for (var i = 0; i < groups.length; i++) {
+    let htmlGroup = [];
+    for (let i = 0; i < groups.length; i++) {
         htmlGroup.push(
             <li  className="list-group-item list-group-item-action">
                 <Group group={groups[i]}/>

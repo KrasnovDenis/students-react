@@ -1,4 +1,3 @@
-import {groups} from "./groupsRepo";
 import {students} from "./StudentsRepo";
 
 export function getAllStudents(){

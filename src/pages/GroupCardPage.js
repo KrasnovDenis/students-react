@@ -2,7 +2,7 @@ import React from "react";
 import '../style/Label.css';
 import '../style/Student.css';
 import '../style/CardPage.css';
-import {deleteStudentFromGroup, getGroupById} from "../store/GroupController";
+import {getGroupById} from "../store/GroupController";
 import {Link} from "react-router-dom";
 
 
@@ -12,24 +12,30 @@ export function GroupCardPage() {
 
     for (let i = 0; i < group.students.length; i++) {
         htmlStudents.push(
-            <div className='row'>
-                <div className='col-lg-8'>
-                    <Link to={"/student/" + group.students[i].id} className="list-group-item">{group.students[i].name}
+            <div className=' list-group-item'>
+                <div className='row'>
+                    <div className='col-lg-10 student-item' id={"id=" + group.students[i].id}>
+                        <Link to={"/student/" + group.students[i].id}>
+                            {group.students[i].name}
+                        </Link>
+                    </div>
 
-                    </Link>
-                </div>
-                <div className='col-sm-1'>
-                    <button type="button" onClick={deleteStudentFromGroup(group.id, group.students[i].id)}
-                            className="btn btn-danger close-button ">
-                        Отчислить
-                    </button>
+                    <div className='col-lg-1'>
+                        <button type="button"
+                                onClick={function () {
+
+                                    }
+                                } className="btn btn-danger">
+                            Отчислить
+                        </button>
+                    </div>
+
                 </div>
             </div>
         );
 
     }
 
-    console.log(group);
     return (
         <div className="container">
             <div className="row">
@@ -38,15 +44,22 @@ export function GroupCardPage() {
 
                     <div className="panel panel-default label-template">
                         <div className="panel-heading">
-                            Название {group.name}
+                           <h2> {group.name}</h2>
                         </div>
                         <div className="panel-body">
-                            Направление - {group.direction}
+                            <h5> {group.direction}</h5>
                         </div>
                         <div className="panel-body">
                             курс - {group.level}
                         </div>
                         <br/>
+
+                        <div>
+                            <button type="button"
+                                    className="btn btn-dark close-button ">
+                                Зачислить
+                            </button>
+                        </div>
                         <ul className="list-group">
                             Список студентов
                             <br/>
@@ -58,6 +71,8 @@ export function GroupCardPage() {
                 <div className=" area col-lg-1"/>
             </div>
         </div>
+
+
     );
 }
 
@@ -65,6 +80,5 @@ export function GroupCardPage() {
 function getGroup() {
     const url = window.location.pathname;
     const groupId = parseInt(url.substring(url.lastIndexOf('/') + 1));
-
     return getGroupById(groupId);
 }

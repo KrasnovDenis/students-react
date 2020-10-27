@@ -1,15 +1,14 @@
 import React from "react";
 import '../style/Label.css';
 import {removeGroupById} from "../store/GroupController";
-import {Link} from "react-router-dom";
 
 export function Group(props) {
     return (
         <div className="panel panel-default label-template group-label">
             <div className="panel-heading">
-                <Link to={'/group/'+props.group.id}>
+                <a href={'/group/'+props.group.id}>
                     {props.group.name}
-                </Link>
+                </a>
             </div>
             <div className="panel-body">
                 Направление - {props.group.direction}
