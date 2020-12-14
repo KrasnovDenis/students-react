@@ -15,7 +15,7 @@ export function Student(props) {
                         <h5>{props.student.group}</h5>
                     </div>
                     <div className="panel-body">
-                        Тип обучения - {props.student.educationTiming}
+                        Тип обучения - {props.student.timing}
                     </div>
                     <div className="panel-body">
                         Средний балл - {props.student.averageGrade}

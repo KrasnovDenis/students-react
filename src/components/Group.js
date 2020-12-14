@@ -1,22 +1,23 @@
 import React from "react";
 import '../style/Label.css';
-import {removeGroupById} from "../store/GroupController";
+import GroupsRepo from "../store/GroupsRepo";
+import {Link} from "react-router-dom";
 
 export function Group(props) {
     return (
         <div className="panel panel-default label-template group-label">
             <div className="panel-heading">
-                <a href={'/group/'+props.group.id}>
+                <Link to={`/groups/${props.group.key}`}>
                     {props.group.name}
-                </a>
+                </Link>
             </div>
             <div className="panel-body">
                 Направление - {props.group.direction}
             </div>
             <div className="panel-body">
-                Курс - {props.group.level}
+                Курс - {props.group.courseLevel}
             </div>
-            <button type="button" onClick={removeGroupById(props.group.id)} className="btn btn-danger close-button ">
+            <button type="button" onClick={GroupsRepo.removeGroup(props.group.id)} className="btn btn-danger close-button ">
                 Расформировать
             </button>
         </div>

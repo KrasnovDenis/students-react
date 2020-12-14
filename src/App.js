@@ -3,9 +3,10 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {Home} from './pages/Home';
 import {NavBar} from "./components/NavBar";
 import {Students} from "./pages/Students";
-import {Groups} from "./pages/Groups";
-import {StudentCardPage} from "./pages/StudentCardPage";
-import {GroupCardPage} from "./pages/GroupCardPage";
+import GroupsComponent from "./store/components/GroupsComponent";
+import StudentCardPage from "./pages/StudentCardPage";
+import GroupCardPage from "./pages/GroupCardPage";
+import StudentsComponent from "./store/components/StudentsComponent";
 
 
 function App() {
@@ -14,10 +15,10 @@ function App() {
           <NavBar/>
           <Switch>
               <Route path={'/home'} exact component={Home}/>
-              <Route path={'/students'} exact component={Students}/>
-              <Route path={'/groups'} exact component={Groups}/>
-              <Route path={'/group/:id'} exact component={GroupCardPage}/>
-              <Route path={'/student/:id'} component={StudentCardPage}/>
+              <Route path={'/groups'} exact component={GroupsComponent}/>
+              <Route path={'/groups/:id'} exact component={GroupCardPage}/>
+              <Route path={'/students'} exact component={StudentsComponent}/>
+              <Route path={'/students/:id'} component={StudentCardPage}/>
           </Switch>
       </BrowserRouter>
   )
