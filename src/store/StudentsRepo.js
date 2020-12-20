@@ -22,8 +22,23 @@ class StudentsRepo {
     }
 
     updateStudent(student) {
-        return axios.post(`USERS_REST_API_URL`, {
-            body: student
+        return axios.post(USERS_REST_API_URL, {
+
+                key : student.key,
+                name:student.name,
+                doubt: student.doubt,
+                timing: student.timing,
+                averageGrade:student.averageGrade
+
+        });
+    }
+
+    createStudent(name, timing, averageGrade,  doubt) {
+        return axios.post(USERS_REST_API_URL, {
+            name : name,
+            averageGrade : averageGrade,
+            timing : timing,
+            doubt : doubt
         });
     }
 }

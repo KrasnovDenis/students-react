@@ -3,7 +3,6 @@ import '../style/Label.css';
 import '../style/Student.css';
 import '../style/CardPage.css';
 import {Link} from "react-router-dom";
-import {StudentEntity} from '../entities/StudentEntity';
 import GroupsRepo from "../store/GroupsRepo";
 import {StudentFromGroup} from "../entities/StudentFromGroup";
 
@@ -58,18 +57,19 @@ class GroupCardPage extends React.Component {
                             <br/>
 
                             <div>
-                                <button type="button"
-                                        className="btn btn-dark close-button "
-                                        onClick={() => GroupsRepo.addStudentToGroup(new StudentEntity("петя", "Пинф31", "очно", "3.2", "нет"))}>
-                                    Зачислить
-                                </button>
+                                <Link to="/add-student-to-group">
+                                    <button type="button"
+                                            className="btn btn-dark close-button ">
+                                        Зачислить
+                                    </button>
+                                </Link>
                             </div>
                             <ul className="list-group">
                                 Список студентов
                                 <br/>
                                 <br/>
                                 {
-                                    <StudentFromGroup group = {this.state.group} />
+                                    <StudentFromGroup group={this.state.group}/>
                                 }
 
                             </ul>

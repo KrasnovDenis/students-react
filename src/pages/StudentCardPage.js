@@ -1,14 +1,17 @@
-import React from "react";
+import React, {Fragment} from 'react'
 import '../style/Label.css';
 import '../style/Student.css';
 import '../style/CardPage.css';
 import StudentsRepo from "../store/StudentsRepo";
+import ModalWindow from '../components/ModalWindow';
+import UpdateStudentModal from "../components/UpdateStudentModal";
 
 class StudentCardPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            student:[]
+            student: [],
+            showModal: false
         }
     }
 
@@ -20,9 +23,23 @@ class StudentCardPage extends React.Component {
         });
     }
 
+    handleModal = () => {
+        this.setState({showModal: !this.state.showModal});
+    }
+
+    onChange = (e) => {
+        const {name, value} = e.target;
+        this.setState({[name]:value});
+    }
+
+    updateHandler = (event) => {
+        StudentsRepo.updateStudent(this.state.student);
+    }
+
     render() {
         let student = this.state.student;
         return (
+
 
             <div className='container'>
 
@@ -37,20 +54,35 @@ class StudentCardPage extends React.Component {
                         <div className="card-body col-lg-5">
                             <h2 className="card-title">
                                 {student.name}
+
                             </h2>
                             <h3 className="card-text">{student.group} </h3>
                         </div>
                     </div>
 
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item"> Тип обучения - {student.timing}</li>
-                        <li className="list-group-item">Средний балл - {student.averageGrade}</li>
-                        <li className="list-group-item">Долги по учебе - {student.doubt}</li>
+                        <li className="list-group-item"> Тип обучения - {student.timing}
+
+                        </li>
+                        <li className="list-group-item">Средний балл - {student.averageGrade}
+
+                        </li>
+                        <li className="list-group-item">Долги по учебе - {student.doubt}
+
+                        </li>
                     </ul>
-                    <button type="button" onClick={() => StudentsRepo.removeStudent(student.key)}
-                            className="btn btn-danger">
-                        Отчислить
-                    </button>
+
+
+                    <Fragment>
+                        {
+                            student.key !== undefined && <ModalWindow id={student.key}/>
+                        }
+                    </Fragment>
+                    <Fragment>
+                        {
+                            <UpdateStudentModal student={student}/>
+                        }
+                    </Fragment>
                 </div>
             </div>
         );

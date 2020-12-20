@@ -17,7 +17,7 @@ export function Group(props) {
             <div className="panel-body">
                 Курс - {props.group.courseLevel}
             </div>
-            <button type="button" onClick={GroupsRepo.removeGroup(props.group.id)} className="btn btn-danger close-button ">
+            <button type="button" onClick={() => {GroupsRepo.removeGroup(props.group.key)}} className="btn btn-danger close-button ">
                 Расформировать
             </button>
         </div>

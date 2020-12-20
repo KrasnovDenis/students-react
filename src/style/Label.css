@@ -4,6 +4,12 @@ a.list-group-item.list-group-item-action{
     padding-top: 20px;
     margin: auto;
 }
+.content-main{
+    max-width: 500px;
+    min-width: 300px;
+    padding-top: 80px;
+    margin: auto;
+}
 
 .list-group-students {
     padding-top: 80px;
